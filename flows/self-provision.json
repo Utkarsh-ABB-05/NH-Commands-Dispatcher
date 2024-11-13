@@ -1,0 +1,411 @@
+[
+    {
+        "id": "d321c8b134bebe68",
+        "type": "tab",
+        "label": "Self Provisioning - New",
+        "disabled": false,
+        "info": "",
+        "env": [
+            {
+                "name": "PlantManagerBaseURL",
+                "value": "http://nh-plantmanager-service.foundationservices:8088/",
+                "type": "str"
+            },
+            {
+                "name": "BearerToken",
+                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1HTHFqOThWTkxvWGFGZnBKQ0JwZ0I0SmFLcyIsImtpZCI6Ik1HTHFqOThWTkxvWGFGZnBKQ0JwZ0I0SmFLcyJ9.eyJhdWQiOiI2ZGFlNDJmOC00MzY4LTQ2NzgtOTRmZi0zOTYwZTI4ZTM2MzAiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zNzJlZTllMC05Y2UwLTQwMzMtYTY0YS1jMDcwNzNhOTFlY2QvIiwiaWF0IjoxNzIwNzg2ODc0LCJuYmYiOjE3MjA3ODY4NzQsImV4cCI6MTcyMDc5MDc3NCwiYWlvIjoiRTJkZ1lNaVFsZm9SMThuVDN4RVNYdmUrakhuRzRZc3pMc1dHekxicThPSi83Si82UndjQSIsImFwcGlkIjoiNmIzMDVlNGMtMTBjYi00YjY2LTgyMjgtNmNkMDY0NWY1ODZkIiwiYXBwaWRhY3IiOiIxIiwiZ3JvdXBzIjpbImMyNDAxYTAyLTU1ODYtNDdiOC04MmVhLWE4ZTk0NDcxNDYwZiIsIjQyMDYzOTA5LWVlMDUtNDllNi1iZDc3LWI0ZjliY2E5YWFjZSIsImIzYjNmYTM2LTMzOGMtNGFhZi05M2Q3LWIyNjcyNzRmMTNhYSIsIjY2YjA2NjczLTMwZGYtNGU4OS05YjM4LTgyYmZiOTdjYzM4ZSIsIjYyOTVmZTc0LTk5YzMtNGExYy1hYjc0LWVjNjk1MTVjMTQzYSIsIjRmZmExZjkxLTUxZWUtNDYxMy04MjYxLWJjYTA0ZjBjMjA4YSIsImJkNTU2MGMyLTQ4OTQtNGJmZC05YTZjLTFhYTg5ZWZlYTc4NyIsIjU1YjIxN2U4LTg2ZjctNDdiNy1hYjNmLWNiZDZhNzIwMzE2YSJdLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zNzJlZTllMC05Y2UwLTQwMzMtYTY0YS1jMDcwNzNhOTFlY2QvIiwiaWR0eXAiOiJhcHAiLCJvaWQiOiIzNjFiZGYxYi0yMGVkLTRmNjAtYTQ2MS00ZjUxNTQzNDQwZDEiLCJyaCI6IjAuQVFJQTRPa3VOLUNjTTBDbVNzQndjNmtlemZoQ3JtMW9RM2hHbFA4NVlPS09OakFDQUFBLiIsInN1YiI6IjM2MWJkZjFiLTIwZWQtNGY2MC1hNDYxLTRmNTE1NDM0NDBkMSIsInRpZCI6IjM3MmVlOWUwLTljZTAtNDAzMy1hNjRhLWMwNzA3M2E5MWVjZCIsInV0aSI6ImowdGEyWl9JdFVtaTRSaUg4MXc2QUEiLCJ2ZXIiOiIxLjAiLCJ4bXNfaWRyZWwiOiIyMCA3In0.xrXyP-TCqFFbIpAPjoHIlPf_5blBBeu5AfdytrVAWvBkvAMttD0Hgz3O-9mUoleG-IEXhCGLkxGjyOYpzNpa_nhI5_5tefUULbfdRmxYZoh0p-mfOg4hbHoZev1extIpN1GqBaYHtHCXYwOuo8HOlX-rGELDVMAUPsr1E2qzOgpGRBHwf3E9iH8ye6N-AIj2wf3CHuQBpNgX5rxQG6xQTQmkXrirG7Fj8xbwlilxijXE6fJ2Ig7I5BfKxWoZjihUqf7ffQ3YNu9mCaPjw5qMLVh-PcJubMK99u2ns0n3ux69aJiLGcZzO4YgsLDMEAR7i4hv3V2-RjnR_iFDss69ag",
+                "type": "str"
+            }
+        ]
+    },
+    {
+        "id": "4d1f98b0.642758",
+        "type": "http request",
+        "z": "d321c8b134bebe68",
+        "name": "PlantManager : GatewayAnnouncement",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1060,
+        "y": 200,
+        "wires": [
+            [
+                "fd0da2fe2c24583b"
+            ]
+        ]
+    },
+    {
+        "id": "b370a4c7c2ddce89",
+        "type": "mqtt in",
+        "z": "d321c8b134bebe68",
+        "name": "MQTT : D2C Topic",
+        "topic": "v1/+/d2c/cmd",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "31fafe8b747203d9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "1b25e4cf4a7e3ed4"
+            ]
+        ]
+    },
+    {
+        "id": "234b304419fc1816",
+        "type": "debug",
+        "z": "d321c8b134bebe68",
+        "name": "Debug: Announcement Message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "583792d6d97fe241",
+        "type": "function",
+        "z": "d321c8b134bebe68",
+        "name": "Prepare GatewayAnnouncement",
+        "func": "msg.headers = {}\n\nmsg.url = env.get('PlantManagerBaseURL') + \"device/gatewayannouncement\";\nmsg.headers[\"content-type\"] = \"application/json\"\nmsg.headers[\"Authorization\"] = env.get('BearerToken');\n\nvar gatewayAnnouncementBody = {\n    gateway_id: msg.payload.gw_id,\n    gateway_type: msg.payload.gw_type,\n    gateway_serialnumber: msg.payload.gw_sn\n} \n\n\nflow.set(\"correlation_id\", msg.payload.cmd_corr_id);\nflow.set(\"gateway_id\", msg.payload.gw_id);\n\nmsg.payload = gatewayAnnouncementBody;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 200,
+        "wires": [
+            [
+                "234b304419fc1816",
+                "4d1f98b0.642758"
+            ]
+        ]
+    },
+    {
+        "id": "684e3b428653c4ce",
+        "type": "function",
+        "z": "d321c8b134bebe68",
+        "name": "Prepare : GatewayReclaim",
+        "func": "var correlation_id = flow.get(\"correlation_id\");\nvar gateway_id = flow.get(\"gateway_id\");\n\nlet dateobj = new Date();\n// converted into a string using toISOString() method.\nlet currentDateTime = dateobj.toISOString();\nvar reclaimMessage;\nif (msg.statusCode == 200){\n    reclaimMessage = {\n        \"time\": currentDateTime,\n        \"cmdType\": \"plt.gwReclaim\",\n        \"gwId\": gateway_id,\n        \"reclaimUrl\": msg.payload.reclaim_url,\n        \"reclaimOtp\": msg.payload.reclaim_otp,\n        \"reclaimQRCode\": msg.payload.reclaim_qrcode\n    }\n}\nelse{\n    reclaimMessage = {\n        \"time\": currentDateTime,\n        \"cmdType\": \"plt.reply\",\n        \"gwId\": gateway_id,\n        \"status\": \"error\",\n        \"msg\": \"Some error occured while announcing gateway to platform\",\n        \"errorCode\": \"6\",\n    }\n}\n\nvar topicToPublish = \"v1/\" + gateway_id + \"/c2d/cmd\";\n// creating the message object\nvar msg = {\n    payload: reclaimMessage,\n    topic: topicToPublish\n};\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1580,
+        "y": 200,
+        "wires": [
+            [
+                "21687e73edbb636b",
+                "7bfb811042ec16ab"
+            ]
+        ]
+    },
+    {
+        "id": "1b25e4cf4a7e3ed4",
+        "type": "switch",
+        "z": "d321c8b134bebe68",
+        "name": "Command Filter",
+        "property": "payload.cmd_type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "plt.gwAnnouncement",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "plt.newDevFromGW",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 300,
+        "y": 340,
+        "wires": [
+            [
+                "583792d6d97fe241"
+            ],
+            [
+                "57ce2fb66c6475b9"
+            ]
+        ],
+        "outputLabels": [
+            "plt.gwAnnouncement",
+            "plt.newDevFromGW"
+        ]
+    },
+    {
+        "id": "57ce2fb66c6475b9",
+        "type": "function",
+        "z": "d321c8b134bebe68",
+        "name": "Prepare Add New Device ",
+        "func": "\nmsg.headers = {}\n\nmsg.url = env.get('PlantManagerBaseURL') + \"device/add\";\nmsg.headers[\"content-type\"] = \"application/json\"\nmsg.headers[\"Authorization\"] = env.get('BearerToken');;\n\nvar deviceBody = {\n    \"name\": msg.payload.dev_name,\n    \"familyId\": msg.payload.dev_family,\n    \"serialNumber\": msg.payload.dev_sn,\n    \"fatherId\": msg.payload.parent_id,\n    \"abilityId\": \"3FA85F64-5717-4562-B3FC-2C987F66ADC6\",\n    \"firmwareVer\": \"1.0.0\",\n    \"note\": \"Request from Node red - self Provisioning\"\n}\n\n\nflow.set(\"correlation_id\", msg.payload.cmd_corr_id);\nflow.set(\"gateway_id\", msg.payload.parent_id);  \n\nmsg.payload = deviceBody;\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 540,
+        "wires": [
+            [
+                "8d1fbb5db1a0a0e3",
+                "9875c2f56770e02c"
+            ]
+        ]
+    },
+    {
+        "id": "8d1fbb5db1a0a0e3",
+        "type": "http request",
+        "z": "d321c8b134bebe68",
+        "name": "PlantManager : Add New Device",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1030,
+        "y": 540,
+        "wires": [
+            [
+                "5eb8d6917fde4eda",
+                "1427eca6b24ff422"
+            ]
+        ]
+    },
+    {
+        "id": "9875c2f56770e02c",
+        "type": "debug",
+        "z": "d321c8b134bebe68",
+        "name": "Debug: New Device Message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "d65b3c17977f03b2",
+        "type": "debug",
+        "z": "d321c8b134bebe68",
+        "name": "Debug: Gateway Reclaim",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1550,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "5eb8d6917fde4eda",
+        "type": "debug",
+        "z": "d321c8b134bebe68",
+        "name": "Debug: Add Device Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "61bfcb62a9e1a458",
+        "type": "function",
+        "z": "d321c8b134bebe68",
+        "name": "Prepare : Confirmation Message",
+        "func": "var correlation_id = flow.get(\"correlation_id\");\nvar gateway_id = flow.get(\"gateway_id\");\n\nlet dateobj = new Date();\n// converted into a string using toISOString() method.\nlet currentDateTime = dateobj.toISOString();\n\nvar confirmationMessage;\nif(msg.statusCode == 201){\n   confirmationMessage = {\n        \"time\": currentDateTime,\n        \"cmdType\": \"plt.reply\",\n        \"devId\": msg.payload.device_ID\n    }\n}\nelse{\n    confirmationMessage = {\n        \"time\": currentDateTime,\n        \"cmdType\": \"plt.reply\",\n        \"gwId\": gateway_id,\n        \"status\": \"error\",\n        \"msg\": \"Some error occured while adding device to gateway\",\n        \"errorCode\": \"6\",\n    }\n}\n\nvar topicToPublish = \"v1/\" + gateway_id + \"/c2d/cmd\";\n\n// creating the message object\nvar msg = {\n    payload: confirmationMessage,\n    topic: topicToPublish\n};\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 540,
+        "wires": [
+            [
+                "7bfb811042ec16ab",
+                "fbda53879cbc7c21"
+            ]
+        ]
+    },
+    {
+        "id": "21687e73edbb636b",
+        "type": "debug",
+        "z": "d321c8b134bebe68",
+        "name": "Debug : Reclaim before publishing",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1940,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "fd0da2fe2c24583b",
+        "type": "json",
+        "z": "d321c8b134bebe68",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1330,
+        "y": 200,
+        "wires": [
+            [
+                "684e3b428653c4ce",
+                "d65b3c17977f03b2"
+            ]
+        ]
+    },
+    {
+        "id": "1427eca6b24ff422",
+        "type": "json",
+        "z": "d321c8b134bebe68",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1330,
+        "y": 540,
+        "wires": [
+            [
+                "61bfcb62a9e1a458"
+            ]
+        ]
+    },
+    {
+        "id": "7bfb811042ec16ab",
+        "type": "mqtt out",
+        "z": "d321c8b134bebe68",
+        "name": "MQTT : C2D Topic",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "31fafe8b747203d9",
+        "x": 1970,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "fbda53879cbc7c21",
+        "type": "debug",
+        "z": "d321c8b134bebe68",
+        "name": "Debug : Reply before publishing",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1830,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "31fafe8b747203d9",
+        "type": "mqtt-broker",
+        "name": "SelfProMQTTConfig",
+        "broker": "nh-infrabackend-egn-test.northeurope-1.ts.eventgrid.azure.net",
+        "port": "8883",
+        "tls": "e309c98fc65fd8cf",
+        "clientid": "noderedclient-authnID",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "5",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e309c98fc65fd8cf",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "noderedclient-authnID.pem",
+        "keyname": "noderedclient-authnID.key",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    }
+]

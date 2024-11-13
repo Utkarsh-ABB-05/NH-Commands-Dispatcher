@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nh-commands-dispatcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nh-commands-dispatcher
+  template:
+    metadata:
+      labels:
+        app: nh-commands-dispatcher
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: nh-commands-dispatcher-node-red
+        image: nhinfrabackendcrtest.azurecr.io/nh-commands-dispatcher:latest
+        ports:
+        - containerPort: 1881
+        volumeMounts:
+        - mountPath: "/data"
+          name: node-red-storage
+        securityContext:
+          runAsUser: 1000
+      volumes:
+      - name: node-red-storage
+        persistentVolumeClaim:
+          claimName: node-red-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nh-commands-dispatcher
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 1880
+    targetPort: 1880
+  selector:
+    app: nh-commands-dispatcher
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nh-commands-dispatcher-pv
+spec:
+  capacity:
+    storage: 256Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nh-commands-dispatcher-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
